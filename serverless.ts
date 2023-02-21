@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from '@functions/hello';
+// import hello from '@functions/hello';
+import {functions as personInfoFunctions} from 'src/services/person-info-manage-service/api'
 
 const serverlessConfiguration: AWS = {
   useDotenv: true,
@@ -11,6 +12,8 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     runtime: 'nodejs14.x',
     stage: 'dev',
+    profile: 'unique-me',
+    region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -21,7 +24,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello },
+  functions: {...personInfoFunctions},
   package: { individually: true },
   custom: {
     esbuild: {
