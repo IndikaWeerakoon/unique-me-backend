@@ -97,6 +97,6 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
 ### offline start command
 - `serverless offline start --reloadHandler`
 
-### resoused
+### resouce
 - [example repo](https://github.com/SaptarshiMisra/codegigs-reactjs-aws-serverless/tree/main/backend/apis)
 - [serverless youtube playlist](https://www.youtube.com/watch?v=D5_FHbdsjRc&list=PLmexTtcbIn_gP8bpsUsHfv-58KsKPsGEo)
