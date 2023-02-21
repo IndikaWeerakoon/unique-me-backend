@@ -100,3 +100,4 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
 ### resouces
 - [example repo](https://github.com/SaptarshiMisra/codegigs-reactjs-aws-serverless/tree/main/backend/apis)
 - [serverless youtube playlist](https://www.youtube.com/watch?v=D5_FHbdsjRc&list=PLmexTtcbIn_gP8bpsUsHfv-58KsKPsGEo)
+- [lambda best practive from aws](https://aws.amazon.com/blogs/compute/best-practices-for-organizing-larger-serverless-applications/)
