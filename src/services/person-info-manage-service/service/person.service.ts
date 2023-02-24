@@ -1,11 +1,23 @@
-import { Person } from "../dto/person.dto"
+import { HydratedDocument } from "mongoose";
+import { IPerson, Person } from "../modal/person.modal"
 
 export class PersonService {
-    retrive(id: string, name: string) {
-        return { response: `user retrieved ${id}: ${name}` }
+    async retrivePerson(id: string) {
+        console.log(id)
+        return Person.findById({_id: id}).exec();
     }
 
-    create(person: Person) {
-        return { response: 'User created', person }
+    async createPerson(person: IPerson) {
+        try {
+            const newPerson: HydratedDocument<IPerson> = new Person({
+                mobile: person.mobile,
+                name: person.name
+            });
+            console.log(newPerson)
+            return newPerson.save();
+        } catch (err) {
+            console.log(err);
+        }
+        
     }
 }

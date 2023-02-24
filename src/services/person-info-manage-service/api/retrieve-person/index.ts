@@ -6,18 +6,19 @@ export default {
       {
         http: {
           method: 'get',
-          path: 'person/{id}',
-          request: {
-            parameters: {
-              querystrings: {
-                name: true,
-              },
-            },
-          },
+          path: 'persons/{id}',
+          // request: {
+          //   parameters: {
+          //     querystrings: {
+          //       name: true,
+          //     },
+          //   },
+          // },
         },
       }
     ],
     environment: {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      DB_URI: process.env.DB_URI
     },
   };

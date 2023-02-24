@@ -7,7 +7,7 @@ export default {
       {
         http: {
           method: 'post',
-          path: 'person',
+          path: 'persons',
           request: {
             schemas: {
               'application/json': schema,
@@ -16,7 +16,9 @@ export default {
         },
       }
     ],
+    timeout: 10,
     environment: {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      DB_URI: process.env.DB_URI
     },
   };
