@@ -107,7 +107,7 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
 
 ### Cognito APIs
 
-- ````POST /oauth2/token HTTP/1.1
+- ```POST /oauth2/token HTTP/1.1
     Host: yourdomain.auth.us-east-1.amazoncognito.com
     Content-Type: application/x-amz-json-1.1
     X-Amz-Target: AWSCognitoIdentityProviderService.InitiateAuth
@@ -119,11 +119,11 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
         "phone_number": "+1234567890"
     },
     "ClientMetadata": {}
-    }```
+    }
 
-  ````
+  ```
 
-- ````POST /oauth2/token HTTP/1.1
+- ```POST /oauth2/token HTTP/1.1
     Host: yourdomain.auth.us-east-1.amazoncognito.com
     Content-Type: application/x-amz-json-1.1
     X-Amz-Target: AWSCognitoIdentityProviderService.RespondToAuthChallenge
@@ -137,5 +137,5 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
         "answer": "1234"
     },
     "ClientMetadata": {}
-    }```
-  ````
+    }
+  ```
