@@ -95,9 +95,47 @@ The project code base is mainly located within the `src` folder. This folder is 
 Any tsconfig.json can be used, but if you do, set the environment variable `TS_NODE_CONFIG` for building the application, eg `TS_NODE_CONFIG=./tsconfig.app.json npx serverless webpack`
 
 ### Offline start command
+
 - `serverless offline start --reloadHandler`
 
 ### Resouces
+
 - [example repo](https://github.com/SaptarshiMisra/codegigs-reactjs-aws-serverless/tree/main/backend/apis)
 - [serverless youtube playlist](https://www.youtube.com/watch?v=D5_FHbdsjRc&list=PLmexTtcbIn_gP8bpsUsHfv-58KsKPsGEo)
 - [lambda best practice from aws](https://aws.amazon.com/blogs/compute/best-practices-for-organizing-larger-serverless-applications/)
+- [aws-cognito-phone-number-authentication(custom-challenge)](https://techinscribed.com/passwordless-phone-number-authentication-using-aws-amplify-cognito/)
+
+### Cognito APIs
+
+- ````POST /oauth2/token HTTP/1.1
+    Host: yourdomain.auth.us-east-1.amazoncognito.com
+    Content-Type: application/x-amz-json-1.1
+    X-Amz-Target: AWSCognitoIdentityProviderService.InitiateAuth
+
+    {
+    "AuthFlow": "CUSTOM_AUTH",
+    "ClientId": "your_client_id",
+    "AuthParameters": {
+        "phone_number": "+1234567890"
+    },
+    "ClientMetadata": {}
+    }```
+
+  ````
+
+- ````POST /oauth2/token HTTP/1.1
+    Host: yourdomain.auth.us-east-1.amazoncognito.com
+    Content-Type: application/x-amz-json-1.1
+    X-Amz-Target: AWSCognitoIdentityProviderService.RespondToAuthChallenge
+
+    {
+    "ClientId": "your_client_id",
+    "ChallengeName": "CUSTOM_CHALLENGE",
+    "Session": "your_session_value",
+    "ChallengeResponses": {
+        "phone_number": "+1234567890",
+        "answer": "1234"
+    },
+    "ClientMetadata": {}
+    }```
+  ````
