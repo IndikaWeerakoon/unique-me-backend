@@ -3,7 +3,6 @@ import { IPerson, Person } from "../modal/person.modal"
 
 export class PersonService {
     async retrivePerson(id: string) {
-        console.log(id)
         return Person.findById({_id: id}).exec();
     }
 

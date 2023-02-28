@@ -107,35 +107,44 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
 
 ### Cognito APIs
 
-- ```POST /oauth2/token HTTP/1.1
-    Host: yourdomain.auth.us-east-1.amazoncognito.com
-    Content-Type: application/x-amz-json-1.1
-    X-Amz-Target: AWSCognitoIdentityProviderService.InitiateAuth
-
-    {
+- ```
+    curl --location 'https://cognito-idp.us-east-1.amazonaws.com/' \
+    --header 'Content-Type: application/x-amz-json-1.1' \
+    --header 'X-Amz-Target: AWSCognitoIdentityProviderService.SignUp' \
+    --data '{
+    "ClientId": "4dq6ps6ggnaqh7qukopdk24qdg",
     "AuthFlow": "CUSTOM_AUTH",
-    "ClientId": "your_client_id",
+    "Password": "Password123!",
+    "Username": "+94712011976",
     "AuthParameters": {
-        "phone_number": "+1234567890"
+        "USERNAME": "+94712011976"
     },
     "ClientMetadata": {}
-    }
+    }'
 
   ```
 
-- ```POST /oauth2/token HTTP/1.1
-    Host: yourdomain.auth.us-east-1.amazoncognito.com
-    Content-Type: application/x-amz-json-1.1
-    X-Amz-Target: AWSCognitoIdentityProviderService.RespondToAuthChallenge
-
-    {
-    "ClientId": "your_client_id",
-    "ChallengeName": "CUSTOM_CHALLENGE",
-    "Session": "your_session_value",
-    "ChallengeResponses": {
-        "phone_number": "+1234567890",
-        "answer": "1234"
+- ```
+    curl --location 'https://cognito-idp.us-east-1.amazonaws.com/' \
+    --header 'Content-Type: application/x-amz-json-1.1' \
+    --header 'X-Amz-Target: AWSCognitoIdentityProviderService.InitiateAuth' \
+    --data '{
+    "ClientId": "4dq6ps6ggnaqh7qukopdk24qdg",
+    "AuthFlow": "CUSTOM_AUTH",
+    "Password": "Password123!",
+    "Username": "+94712011976",
+    "AuthParameters": {
+        "USERNAME": "+94712011976",
+        "ChallengeName": "SRP_A"
     },
-    "ClientMetadata": {}
+    "ClientMetadata": {
+        "custom_challenge": "CUSTOM_CHALLENGE"
     }
+    }'
   ```
+
+  ### Custom auth challenge
+
+  Here this doc will explain how custome auth chaleenge in aws cognito works
+
+  - [aws-cognito-phone-number-authentication(custom-challenge)](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-challenge.html)

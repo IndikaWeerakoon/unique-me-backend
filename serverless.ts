@@ -1,9 +1,12 @@
-import type { AWS } from '@serverless/typescript';
-
 // import hello from '@functions/hello';
-import {functions as personInfoFunctions} from 'src/services/person-info-manage-service/api'
+// import {AWS} from '@serverless/typescript';
+import { functions as personInfoFunctions } from '@pims/api';
+import { functions as cognitoCustomeFunction } from '@ccas/api'
+import { CognitoUserPool, CognitoUserPoolClient } from '@res/cognito.resource';
+import { OtpSmsTopic, OtpSmsTopicPolicy, CognitoSmsRole } from '@res/sns.resouce';
+import { LambdaSnsPublish } from '@res/roles.resource';
 
-const serverlessConfiguration: AWS = {
+const serverlessConfiguration = {
   useDotenv: true,
   service: 'unique-me-backend',
   frameworkVersion: '3',
@@ -14,6 +17,7 @@ const serverlessConfiguration: AWS = {
     stage: 'dev',
     profile: 'unique-me',
     region: 'us-east-1',
+    stackName: '${self:service}-stack-${sls:stage}',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -23,8 +27,10 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     },
   },
-  // import the function via paths
-  functions: {...personInfoFunctions},
+  functions: {
+    ...personInfoFunctions,
+    ...cognitoCustomeFunction,
+  },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -38,6 +44,16 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
   },
+  resources: {
+    Resources: {
+      OtpSmsTopic,
+      OtpSmsTopicPolicy,
+      CognitoSmsRole,
+      CognitoUserPool,
+      CognitoUserPoolClient,
+      LambdaSnsPublish
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;

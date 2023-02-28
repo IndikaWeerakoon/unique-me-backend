@@ -4,7 +4,9 @@
     "paths": {
       "@services/*": ["src/services/*"],
       "@libs/*": ["src/libs/*"],
-      "@pims/*": ["src/services/person-info-manage-service/*"]
+      "@pims/*": ["src/services/person-info-manage-service/*"],
+      "@ccas/*": ["src/services/cognito-custom-auth-service/*"],
+      "@res/*": ["resources/*"],
     }
   }
 }
