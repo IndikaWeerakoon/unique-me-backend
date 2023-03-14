@@ -4,6 +4,7 @@ const verifyAuthChallenge: Handler = async (event) => {
     console.log(event.request);
     
     const expectedAnswer = event.request.privateChallengeParameters.secretLoginCode; 
+    console.log('challenge comparison', event.request.challengeAnswer === expectedAnswer)
     if (event.request.challengeAnswer === expectedAnswer) {
         event.response.answerCorrect = true;
     } else {

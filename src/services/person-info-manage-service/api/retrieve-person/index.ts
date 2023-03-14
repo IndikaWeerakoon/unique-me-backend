@@ -7,13 +7,13 @@ export default {
         http: {
           method: 'get',
           path: 'persons/{id}',
-          // request: {
-          //   parameters: {
-          //     querystrings: {
-          //       name: true,
-          //     },
-          //   },
-          // },
+          authorizer: {
+            type: 'COGNITO_USER_POOLS',
+            authorizerId: {
+              Ref: 'Authorizer'
+            }
+
+          }
         },
       }
     ],

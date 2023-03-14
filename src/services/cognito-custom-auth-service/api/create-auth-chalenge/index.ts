@@ -11,5 +11,8 @@ export default {
             }
         }
     ],
-    role:  {     "Fn::GetAtt": ["LambdaSnsPublish", "Arn"] }   
+    role:  {     "Fn::GetAtt": ["LambdaSnsPublish", "Arn"] } ,
+    environment: {
+        SHOUTOUT_KEY: process.env.SHOUTOUT_KEY
+    }, 
 };

@@ -13,6 +13,13 @@ export default {
               'application/json': schema,
             },
           },
+          authorizer: {
+            type: 'COGNITO_USER_POOLS',
+            authorizerId: {
+              Ref: 'Authorizer'
+            }
+
+          }
         },
       }
     ],

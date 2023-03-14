@@ -143,8 +143,27 @@ Any tsconfig.json can be used, but if you do, set the environment variable `TS_N
     }'
   ```
 
+  - ```
+    curl --location 'https://cognito-idp.us-east-1.amazonaws.com/' \
+    --header 'Content-Type: application/x-amz-json-1.1' \
+    --header 'X-Amz-Target: AWSCognitoIdentityProviderService.RespondToAuthChallenge' \
+    --data '{
+        "ChallengeName": "CUSTOM_CHALLENGE",
+        "ClientId": "<client-id>",
+        "Session": "<session>",
+        "ChallengeResponses": {
+            "USERNAME": "+94712011976",
+            "ANSWER": "8423"
+        }
+    }'
+    ```
+
+  ```
+
   ### Custom auth challenge
 
   Here this doc will explain how custome auth chaleenge in aws cognito works
 
   - [aws-cognito-phone-number-authentication(custom-challenge)](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-challenge.html)
+  - [custome auth good sample](https://exanubes.com/blog/passwordless-authentication-flow-in-cognito-user-pool)
+  ```

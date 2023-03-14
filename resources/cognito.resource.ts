@@ -13,23 +13,6 @@ export const CognitoUserPool:Resource = {
         VerificationMessageTemplate: {
             SmsMessage: 'Your verification code for unique-mie is {####}.'
         },
-        // LambdaConfig: {
-        //     PreSignUp: {
-        //       'Fn::GetAtt': ['unique-me-backend-dev-pre-signup', 'Arn'],
-        //     },
-        //     PostAuthentication: {
-        //       'Fn::GetAtt': ['unique-me-backend-dev-post-authentication', 'Arn'],
-        //     },
-        //     DefineAuthChallenge: {
-        //       'Fn::GetAtt': ['unique-me-backend-dev-define-auth-challenge', 'Arn'],
-        //     },
-        //     CreateAuthChallenge: {
-        //       'Fn::GetAtt': ['unique-me-backend-dev-create-auth-challenge', 'Arn'],
-        //     },
-        //     VerifyAuthChallengeResponse: {
-        //       'Fn::GetAtt': ['unique-me-backend-dev-verify-auth-chalenge-response', 'Arn'],
-        //     },
-        //   },
     }
 }
 

@@ -5,6 +5,7 @@ import { functions as cognitoCustomeFunction } from '@ccas/api'
 import { CognitoUserPool, CognitoUserPoolClient } from '@res/cognito.resource';
 import { OtpSmsTopic, OtpSmsTopicPolicy, CognitoSmsRole } from '@res/sns.resouce';
 import { LambdaSnsPublish } from '@res/roles.resource';
+import { Authorizer } from '@res/autherizer.resource';
 
 const serverlessConfiguration = {
   useDotenv: true,
@@ -51,7 +52,8 @@ const serverlessConfiguration = {
       CognitoSmsRole,
       CognitoUserPool,
       CognitoUserPoolClient,
-      LambdaSnsPublish
+      LambdaSnsPublish,
+      Authorizer
     }
   }
 };
